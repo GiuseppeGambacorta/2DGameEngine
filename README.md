@@ -1,5 +1,5 @@
 
-
+```mermaid
 classDiagram
 
 Robot <|.. BaseRobot
@@ -65,3 +65,4 @@ getConsumptionForPickUp() double
 getConsumptionForDropDown() double
 
 }
+```
