@@ -24,11 +24,6 @@ public class GameEngine  {
 		}
 	}
 
-	/**
-	 * Take a little nap to synch with the frame rate
-	 * 
-	 * @param current
-	 */
 	protected void waitForNextFrame(long current){
 		long dt = System.currentTimeMillis() - current;
 		if (dt < period){
