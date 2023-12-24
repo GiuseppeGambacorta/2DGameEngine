@@ -1,4 +1,4 @@
-package rollball.common;
+package common;
 
 /**
  *
@@ -8,18 +8,27 @@ package rollball.common;
  */
 public class P2d implements java.io.Serializable {
 
-    public double x,y;
+    private double x;
+    private double y;
 
-    public P2d(double x,double y){
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public P2d(final double x,final double y){
         this.x=x;
         this.y=y;
     }
 
-    public P2d sum(V2d v){
-        return new P2d(x+v.x,y+v.y);
+    public P2d sum(final V2d v){
+        return new P2d(x+v.getX(),y+v.getY());
     }
 
-    public V2d sub(P2d v){
+    public V2d sub(final P2d v){
         return new V2d(x-v.x,y-v.y);
     }
 

@@ -24,8 +24,8 @@ public class GameEngine  {
 		}
 	}
 
-	protected void waitForNextFrame(long current){
-		long dt = System.currentTimeMillis() - current;
+	protected void waitForNextFrame(final long current){
+		final long dt = System.currentTimeMillis() - current;
 		if (dt < period){
 			try {
 				Thread.sleep(period-dt);

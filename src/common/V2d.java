@@ -1,13 +1,5 @@
-/*
- *   V2d.java
- *
- * Copyright 2000-2001-2002  aliCE team at deis.unibo.it
- *
- * This software is the proprietary information of deis.unibo.it
- * Use is subject to license terms.
- *
- */
-package rollball.common;
+
+package common;
 
 /**
  *
@@ -17,9 +9,18 @@ package rollball.common;
  */
 public class V2d implements java.io.Serializable {
 
-    public double x,y;
+    private double x;
+    private double y;
 
-    public V2d(double x,double y){
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public V2d(final double x,final double y){
         this.x=x;
         this.y=y;
     }
@@ -33,11 +34,11 @@ public class V2d implements java.io.Serializable {
     }
 
     public V2d getNormalized(){
-        double module=(double)Math.sqrt(x*x+y*y);
+        double module= this.module();;
         return new V2d(x/module,y/module);
     }
 
-    public V2d mul(double fact){
+    public V2d mul(final double fact){
         return new V2d(x*fact,y*fact);
     }
 
