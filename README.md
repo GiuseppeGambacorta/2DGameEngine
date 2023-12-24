@@ -1,18 +1,67 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+classDiagram
 
-The workspace contains two folders by default, where:
+Robot <|.. BaseRobot
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+BaseRobot <|-- RobotWithTwoArms
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Robot <|-- RobotWithArms
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+<<Interface>> Robot
 
-## Dependency Management
+<<Interface>> RobotWithArms
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+RobotWithArms <|.. RobotWithTwoArms
+
+RobotWithTwoArms o-- BaseArm
+
+class Robot {
+
+moveUp() boolean
+
+moveDown() boolean
+
+moveLeft() boolean
+
+moveRight() boolean
+
+recharge() void
+
+getBatteryLevel() double
+
+getPosition() Position2D
+
+}
+
+class RobotWithArms {
+
+pickUp() boolean
+
+dropDown() boolean
+
+getItemsCarried() int
+
+}
+
+class RobotWithTwoArms {
+
+RobotWithTwoArms(String)
+
+}
+
+class BaseArm {
+
+BaseArm(String)
+
+isGrabbing() boolean
+
+pickUp() void
+
+dropDown() void
+
+getConsumptionForPickUp() double
+
+getConsumptionForDropDown() double
+
+}
