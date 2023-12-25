@@ -12,6 +12,8 @@ import graphics.impl.wievimpl;
 import model.api.*;
 import scenes.GameScene.GameScene;
 import scenes.GameScene.GameScenePanel;
+import scenes.MenuScene.MenuScene;
+import scenes.MenuScene.MenuScenePanel;
 import scenes.api.Scene;
 import scenes.api.ScenePanel;;
 
@@ -29,12 +31,22 @@ public class GameEngine  {
 		scenePanelMap = new HashMap<>();
 
         Scene gameScene = new GameScene();
+		Scene menuScene = new MenuScene();
+
         ScenePanel gameScenePanel = new GameScenePanel(gameScene, 600, 600);
+		ScenePanel menuScenePanel = new MenuScenePanel(menuScene, 600, 600);
+
+		System.out.println(menuScene.getSceneEntities());
+		System.out.println(gameScene.getSceneEntities());
 
         scenePanelMap.put(gameScene, gameScenePanel);
+		scenePanelMap.put(menuScene, menuScenePanel);
 
         currentScene = gameScene;
         currentPanel = gameScenePanel;
+
+		currentScene = menuScene;
+		currentPanel = menuScenePanel;
 		
 		window = new wievimpl(currentPanel, "engine", 600, 600);
 	}
