@@ -95,19 +95,23 @@ class View {
 }
 
 
+GameEngine o-- View
+GameEngine o-- Scene
+
+ScenePanelImpl --|> ScenePanel : Implements
+ScemePanelImpl o-- Scene
+View o-- ScenePanel
+
+GameScene --|> Scene : Implements
+GameScene o-- GameObject
 
 GameObjectImpl ..|> GameObject : Implements
 
 GameObjectImpl o-- P2d
 GameObjectImpl o-- V2d
 
-GameScene --|> Scene : Implements
-GameScene o-- GameObject
-
-ScenePanelImpl --|> ScenePanel : Implements
-ScemePanelImpl o-- Scene
-View o-- ScenePanel
 
 
-GameEngine o-- View
-GameEngine o-- Scene
+
+
+
