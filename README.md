@@ -99,7 +99,7 @@ GameEngine o-- View
 GameEngine o-- Scene
 
 ScenePanelImpl --|> ScenePanel : Implements
-ScemePanelImpl o-- Scene
+ScenePanelImpl o-- Scene
 View o-- ScenePanel
 
 GameScene --|> Scene : Implements
