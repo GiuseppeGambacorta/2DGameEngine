@@ -23,7 +23,7 @@ public class GameEngine implements Mediator {
 	final private long period = 20; /* 20 ms = 50 frame al secondo */
 	final private Logger logger = Logger.getLogger("GameEngine");
 	
-	final private Map<Scene, ScenePanel> scenePanelMap;
+	final private Map<ScenePanel, Scene> scenePanelMap;
 	final private List<ScenePanel> listScene;
 	private Scene currentScene;
 	private ScenePanel currentPanel;
@@ -39,8 +39,8 @@ public class GameEngine implements Mediator {
         ScenePanel gameScenePanel = new GameScenePanel(gameScene, 600, 600);
 		ScenePanel menuScenePanel = new MenuScenePanel(menuScene, 600, 600);
         
-		scenePanelMap.put(gameScene, gameScenePanel);
-		scenePanelMap.put(menuScene, menuScenePanel);
+		scenePanelMap.put(gameScenePanel, gameScene);
+		scenePanelMap.put(menuScenePanel, menuScene);
 
 		listScene.add(menuScenePanel);
 		listScene.add(gameScenePanel);
@@ -88,7 +88,12 @@ public class GameEngine implements Mediator {
 
 	@Override
 	public void dosomething(){
-		window.setPanelScene(listScene.get(1));
+		currentPanel = listScene.get(1);
+		currentScene = scenePanelMap.get(currentPanel);
+
+		window.setPanelScene(currentPanel);
+		
+	
 	}
 
 }
