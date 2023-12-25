@@ -53,6 +53,18 @@ class GameObject {
   +getCurrentVel(): V2d
 }
 
+class GameObjectImpl {
+  <<class>>
+  -pos: P2d
+  -vel: V2d
+  +GameObjectImpl(pos: P2d, vel: V2d)
+  +setPos(pos: P2d): void
+  +setVel(vel: V2d): void
+  +updateState(dt: int): void
+  +getCurrentPos(): P2d
+  +getCurrentVel(): V2d
+}
+
 class View {
   <<interface>>
   +render(): void
@@ -60,6 +72,6 @@ class View {
 
 
 
-
+GameObject <|-- GameObjectImpl
 GameEngine o-- View
 GameEngine o-- Scene
