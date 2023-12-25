@@ -15,35 +15,35 @@ import scenes.GameScene.GameScenePanel;
 import scenes.MenuScene.MenuScene;
 import scenes.MenuScene.MenuScenePanel;
 import scenes.api.Scene;
-import scenes.api.ScenePanel;;
+import scenes.api.ScenePanel;
+import core.api.*;
 
-public class GameEngine  {
+public class GameEngine implements Mediator {
 
 	final private long period = 20; /* 20 ms = 50 frame al secondo */
 	final private Logger logger = Logger.getLogger("GameEngine");
 	
 	final private Map<Scene, ScenePanel> scenePanelMap;
+	final private List<ScenePanel> listScene;
 	private Scene currentScene;
 	private ScenePanel currentPanel;
 	final private View window;
 
 	public GameEngine(){
 		scenePanelMap = new HashMap<>();
+		listScene = new ArrayList<>();
 
         Scene gameScene = new GameScene();
-		Scene menuScene = new MenuScene();
+		Scene menuScene = new MenuScene(this);
 
         ScenePanel gameScenePanel = new GameScenePanel(gameScene, 600, 600);
 		ScenePanel menuScenePanel = new MenuScenePanel(menuScene, 600, 600);
-
-		System.out.println(menuScene.getSceneEntities());
-		System.out.println(gameScene.getSceneEntities());
-
-        scenePanelMap.put(gameScene, gameScenePanel);
+        
+		scenePanelMap.put(gameScene, gameScenePanel);
 		scenePanelMap.put(menuScene, menuScenePanel);
 
-        currentScene = gameScene;
-        currentPanel = gameScenePanel;
+		listScene.add(menuScenePanel);
+		listScene.add(gameScenePanel);
 
 		currentScene = menuScene;
 		currentPanel = menuScenePanel;
@@ -83,6 +83,12 @@ public class GameEngine  {
 	
 	protected void render(){
 		window.render();
+	}
+
+
+	@Override
+	public void dosomething(){
+		window.setPanelScene(listScene.get(1));
 	}
 
 }

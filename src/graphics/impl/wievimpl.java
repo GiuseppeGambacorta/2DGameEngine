@@ -55,6 +55,14 @@ public class wievimpl implements View{
     }
 
 
+    @Override
+    public void setPanelScene(final ScenePanel scenePanel){
+        frame.getContentPane().remove((Component) this.panel );
+        this.panel = scenePanel;
+        frame.getContentPane().add((Component) panel);
+    }
+
+
     
     
 }
