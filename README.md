@@ -72,6 +72,14 @@ class View {
 
 
 
-GameObject <|-- GameObjectImpl
+GambeObjectImpl ..|> GameObject : Extends
+
+GameObjectImpl o-- P2d
+GameObjectImpl o-- V2d
+
+GameScene --|> Scene : Implements
+GameScene o-- GameObject
+
+
 GameEngine o-- View
 GameEngine o-- Scene
