@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.logging.*;
 
 
-import graphics.api.wiev;
+import graphics.api.View;
 import graphics.impl.wievimpl;
 import model.api.*;
-import model.impl.GameScene;;
+import scenes.GameScene.GameScene;
+import scenes.GameScene.GameScenePanel;
+import scenes.api.Scene;
+import scenes.api.ScenePanel;;
 
 public class GameEngine  {
 
@@ -16,14 +19,21 @@ public class GameEngine  {
 	final private Logger logger = Logger.getLogger("GameEngine");
 	
 	final private List<Scene> scenes;
+	final private List<ScenePanel> panels;
 	private Scene currentScene;
-	final private wiev window;
+	private ScenePanel currentPanel;
+	final private View window;
 
 	public GameEngine(){
 		scenes = new ArrayList<>();
 		scenes.add(new GameScene());
 		currentScene = scenes.get(0);
-		window = new wievimpl(currentScene, "engine", 600, 600);
+
+		panels = new ArrayList<>();
+		panels.add(new GameScenePanel(currentScene, 600, 600));
+		currentPanel = panels.get(0);
+		
+		window = new wievimpl(currentPanel, "engine", 600, 600);
 	}
 	
 	public void mainLoop(){

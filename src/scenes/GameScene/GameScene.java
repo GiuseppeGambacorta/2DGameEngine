@@ -1,4 +1,4 @@
-package model.impl;
+package scenes.GameScene;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,8 @@ import java.util.List;
 import common.P2d;
 import common.V2d;
 import model.api.GameObject;
-import model.api.Scene;
+import model.impl.Ball;
+import scenes.api.Scene;
 
 public class GameScene implements Scene {
 

@@ -52,6 +52,22 @@ class GameScene {
   +getSceneEntities(): List<GameObject>
 }
 
+class ScenePanel{
+  <<interface>>
+  +paint(final Graphics g): void
+}
+
+class ScenePanelImpl{
+  <<class>>
+  -centerX: int
+  -centerY: int
+  -scene: Scene
+  +ScenePanelImpl(scene: Scene)
+  +paint(final Graphics g): void
+}
+
+
+
 class GameObject {
   <<interface>>
   +setPos(pos: P2d): void
@@ -87,6 +103,10 @@ GameObjectImpl o-- V2d
 
 GameScene --|> Scene : Implements
 GameScene o-- GameObject
+
+ScenePanelImpl --|> ScenePanel : Implements
+ScemePanelImpl o-- Scene
+view o-- ScenePanel
 
 
 GameEngine o-- View

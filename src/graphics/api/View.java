@@ -1,5 +1,5 @@
 package graphics.api;
 
-public interface wiev {
+public interface View {
     public void render();
 }

@@ -1,6 +1,8 @@
-package model.api;
+package scenes.api;
 
 import java.util.List;
+
+import model.api.GameObject;
 
 public interface Scene {
 
