@@ -72,7 +72,7 @@ class View {
 
 
 
-GambeObjectImpl ..|> GameObject : Extends
+GameObjectImpl ..|> GameObject : Extends
 
 GameObjectImpl o-- P2d
 GameObjectImpl o-- V2d
