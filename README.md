@@ -44,6 +44,14 @@ class Scene {
   +getSceneEntities(): List<GameObject>
 }
 
+class GameScene {
+  <<class>>
+  -entities: List<GameObject>
+  +GameScene()
+  +updateState(dt: int): void
+  +getSceneEntities(): List<GameObject>
+}
+
 class GameObject {
   <<interface>>
   +setPos(pos: P2d): void
