@@ -12,6 +12,7 @@ import graphics.impl.wievimpl;
 import model.api.*;
 import scenes.GameScene.GameScene;
 import scenes.GameScene.GameScenePanel;
+import scenes.GameScene.prova;
 import scenes.MenuScene.MenuScene;
 import scenes.MenuScene.MenuScenePanel;
 import scenes.api.Scene;
@@ -48,7 +49,8 @@ public class GameEngine implements Mediator {
 		currentScene = menuScene;
 		currentPanel = menuScenePanel;
 		
-		window = new wievimpl(currentPanel, "engine", 600, 600);
+		var wewe = new prova(menuScene, 600, 600);
+		window = new wievimpl(wewe, "engine", 600, 600);
 	}
 	
 	public void mainLoop(){

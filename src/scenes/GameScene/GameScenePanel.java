@@ -1,5 +1,6 @@
 package scenes.GameScene;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
