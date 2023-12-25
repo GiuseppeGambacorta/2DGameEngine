@@ -53,8 +53,13 @@ class GameObject {
   +getCurrentVel(): V2d
 }
 
+class View {
+  <<interface>>
+  +render(): void
+}
 
 
 
-GameEngine o-- Wiev
+
+GameEngine o-- View
 GameEngine o-- Scene
