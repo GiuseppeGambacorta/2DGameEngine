@@ -74,10 +74,8 @@ public class wievimpl implements wiev{
         public void paint(final Graphics g){
     		Graphics2D g2 = (Graphics2D) g;
     		
-    		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-    		          RenderingHints.VALUE_ANTIALIAS_ON);
-    		g2.setRenderingHint(RenderingHints.KEY_RENDERING,
-    		          RenderingHints.VALUE_RENDER_QUALITY);
+    		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    		g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
     		g2.clearRect(0,0,this.getWidth(),this.getHeight());
             
     		List<GameObject> entities = scene.getSceneEntities();

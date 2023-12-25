@@ -14,7 +14,7 @@ public class GameScene implements Scene {
 
     public GameScene(){
         objects = new ArrayList<GameObject>();
-        objects.add(new Ball(new P2d(-1,-1), new V2d(1,1)));
+        objects.add(new Ball(new P2d(-1,-1), new V2d(0,0)));
     }
 
     @Override
