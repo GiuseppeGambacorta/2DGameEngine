@@ -106,7 +106,7 @@ GameScene o-- GameObject
 
 ScenePanelImpl --|> ScenePanel : Implements
 ScemePanelImpl o-- Scene
-view o-- ScenePanel
+View o-- ScenePanel
 
 
 GameEngine o-- View
