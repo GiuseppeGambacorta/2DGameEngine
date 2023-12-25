@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.logging.*;
 
 
 import graphics.api.View;
 import graphics.impl.wievimpl;
 import model.api.*;
+import scenes.AnotherScene.AnotherScene;
+import scenes.AnotherScene.AnotherScenePanel;
 import scenes.GameScene.GameScene;
 import scenes.GameScene.GameScenePanel;
-import scenes.GameScene.prova;
-import scenes.MenuScene.MenuScene;
-import scenes.MenuScene.MenuScenePanel;
-import scenes.api.Scene;
-import scenes.api.ScenePanel;
+import scenes.MenuScene.*;
+import scenes.api.*;
 import core.api.*;
 
 public class GameEngine implements Mediator {
@@ -34,23 +34,29 @@ public class GameEngine implements Mediator {
 		scenePanelMap = new HashMap<>();
 		listScene = new ArrayList<>();
 
+		Menu menuScene = new MenuScene(this);
         Scene gameScene = new GameScene();
-		Scene menuScene = new MenuScene(this);
+		Scene anotherScene = new AnotherScene();
+		
 
+		ScenePanel menuScenePanel = new MenuPanel(menuScene, 600, 600);
         ScenePanel gameScenePanel = new GameScenePanel(gameScene, 600, 600);
-		ScenePanel menuScenePanel = new MenuScenePanel(menuScene, 600, 600);
-        
+		ScenePanel anotherScenePanel = new AnotherScenePanel(anotherScene, 600, 600);
+		
+        scenePanelMap.put(menuScenePanel, menuScene);
 		scenePanelMap.put(gameScenePanel, gameScene);
-		scenePanelMap.put(menuScenePanel, menuScene);
+		scenePanelMap.put(anotherScenePanel, anotherScene);
+		
 
 		listScene.add(menuScenePanel);
 		listScene.add(gameScenePanel);
+		listScene.add(anotherScenePanel);
 
 		currentScene = menuScene;
 		currentPanel = menuScenePanel;
 		
-		var wewe = new prova(menuScene, 600, 600);
-		window = new wievimpl(wewe, "engine", 600, 600);
+	
+		window = new wievimpl(currentPanel, "engine", 600, 600);
 	}
 	
 	public void mainLoop(){
@@ -90,7 +96,8 @@ public class GameEngine implements Mediator {
 
 	@Override
 	public void dosomething(){
-		currentPanel = listScene.get(1);
+		var random = new Random();
+		currentPanel = listScene.get(random.nextInt(1, 3));
 		currentScene = scenePanelMap.get(currentPanel);
 
 		window.setPanelScene(currentPanel);

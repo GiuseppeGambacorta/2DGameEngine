@@ -1,4 +1,4 @@
-package scenes.GameScene;
+package scenes.MenuScene;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,18 +16,24 @@ import model.api.*;
 import common.*;
 import model.impl.*;
 
-public class prova extends JPanel implements ScenePanel{
+public class MenuPanel extends JPanel implements ScenePanel{
     	final private int centerX;
     	final private int centerY;
-		final private Scene scene;
+		final private Menu scene;
     	
-    	public prova (final Scene scene, final int w, final int h){
+    	public MenuPanel (final Menu scene, final int w, final int h){
             setSize(w,h);
             centerX = w/2;
             centerY = h/2;
 			this.scene = scene;
 
 			JButton bottone = new JButton("ciao");
+			bottone.addActionListener( e -> {
+					// Code to execute when the button is clicked
+					System.out.println("Button clicked!");
+					scene.buttonClicked();
+				
+			});
 			this.add(bottone);
         }
         

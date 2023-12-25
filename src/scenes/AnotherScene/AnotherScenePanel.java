@@ -1,4 +1,4 @@
-package scenes.MenuScene;
+package scenes.AnotherScene;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -15,12 +15,12 @@ import model.api.*;
 import common.*;
 import model.impl.*;
 
-public class MenuScenePanel extends JPanel implements ScenePanel{
+public class AnotherScenePanel extends JPanel implements ScenePanel{
     	final private int centerX;
     	final private int centerY;
 		final private Scene scene;
     	
-    	public MenuScenePanel (final Scene scene, final int w, final int h){
+    	public AnotherScenePanel (final Scene scene, final int w, final int h){
             setSize(w,h);
             centerX = w/2;
             centerY = h/2;
