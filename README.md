@@ -172,17 +172,7 @@ class ScenePanel{
   +paint(final Graphics g): void
 }
 
-class SceneManagerImpl {
-  <<class>>
-  -scenes: Map<String, Scene>
-  -currentScene: Scene
-  -currentPanel: ScenePanel
-  +SceneManager()
-  +addScene(name: String, scene: Scene): void
-  +setCurrentScene(name: String): void
-  +getCurrentScene(): Scene
-  +getCurrentPanel(): ScenePanel
-}
+
 
 class ScenePanelImpl{
   <<class>>
@@ -193,12 +183,16 @@ class ScenePanelImpl{
   +paint(final Graphics g): void
 }
 
+class SceneCommunicator {
+  <<interface>>
+  +startGame() : void
+}
 
 SceneManagerImpl ..|> SceneManager : Implements
 SceneManagerImpl ..|> SceneCommunicator : Implements
 SceneManagerImpl o-- Scene
 SceneManagerImpl o-- ScenePanel
 
-Scene o-- SceneCommunicator
+Scene o-- SceneManagerImpl
 
 ```
