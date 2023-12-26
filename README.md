@@ -23,13 +23,7 @@ class Scene {
   +getSceneEntities(): List<GameObject>
 }
 
-class GameScene {
-  <<class>>
-  -entities: List<GameObject>
-  +GameScene()
-  +updateState(dt: int): void
-  +getSceneEntities(): List<GameObject>
-}
+
 
 class ScenePanel{
   <<interface>>
@@ -68,6 +62,21 @@ View o-- ScenePanel
 
 ```mermaid
 classDiagram
+
+class Scene {
+  <<interface>>
+  +updateState(dt: int): void
+  +getSceneEntities(): List<GameObject>
+}
+
+class GameScene {
+  <<class>>
+  -entities: List<GameObject>
+  +GameScene()
+  +updateState(dt: int): void
+  +getSceneEntities(): List<GameObject>
+}
+
 
 class GameObject {
   <<interface>>
