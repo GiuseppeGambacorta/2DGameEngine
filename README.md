@@ -123,6 +123,24 @@ class V2d {
   +mul(fact: double): V2d
 }
 
+class ScenePanel{
+  <<interface>>
+  +paint(final Graphics g): void
+}
+
+class ScenePanelImpl{
+  <<class>>
+  -centerX: int
+  -centerY: int
+  -scene: Scene
+  +ScenePanelImpl(scene: Scene)
+  +paint(final Graphics g): void
+}
+
+
+ScenePanelImpl --|> ScenePanel : Implements
+ScenePanelImpl o-- Scene
+
 
 GameScene --|> Scene : Implements
 GameScene o-- GameObject
@@ -134,4 +152,45 @@ GameObjectImpl o-- V2d
 
 ```
 
+```mermaid
 
+
+
+class SceneManager {
+  <<interface>>
+  +getActualScene(): Entry<ScenePanel,Scene>
+  sceneChanged(): boolean
+}
+
+class SceneManagerImpl {
+  <<class>>
+  -scenes: Map<String, Scene>
+  -currentScene: Scene
+  -currentPanel: ScenePanel
+  +SceneManager()
+  +addScene(name: String, scene: Scene): void
+  +setCurrentScene(name: String): void
+  +getCurrentScene(): Scene
+  +getCurrentPanel(): ScenePanel
+}
+
+class ScenePanelImpl{
+  <<class>>
+  -centerX: int
+  -centerY: int
+  -scene: Scene
+  +ScenePanelImpl(scene: Scene)
+  +paint(final Graphics g): void
+}
+
+
+SceneManagerImpl ..|> SceneManager : Implements
+sceneManagerImpl ..|> SceneCommunicator : Implements
+SceneManagerImpl o-- Scene
+SceneManagerImpl o-- ScenePanel
+
+Scene o-- SceneCommunicator
+
+
+
+```
