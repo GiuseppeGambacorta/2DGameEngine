@@ -5,7 +5,8 @@ import java.util.List;
 
 import common.P2d;
 import common.V2d;
-import core.api.Mediator;
+import core.api.SceneCommunicator;
+import core.api.SceneManager;
 import model.api.GameObject;
 import model.impl.Ball;
 import scenes.api.Menu;
@@ -13,9 +14,9 @@ import scenes.api.Menu;
 public class MenuScene implements Menu {
 
 
-    final private Mediator engine;
-    public MenuScene(final Mediator engine){
-        this.engine = engine;
+    final private SceneCommunicator manager;
+    public MenuScene(final SceneCommunicator manager){
+        this.manager = manager;
     }
 
     @Override
@@ -30,7 +31,7 @@ public class MenuScene implements Menu {
 
     @Override
     public void buttonClicked() {
-        engine.dosomething();
+        manager.startGame();
     }
 
 
