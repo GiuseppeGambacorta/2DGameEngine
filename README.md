@@ -174,14 +174,7 @@ class ScenePanel{
 }
 
 
-SceneManagerImpl {
-  <<class>>
-  -scene: Scene
-  -scenePanel: ScenePanel
-  +getActualScene(): Entry<ScenePanel,Scene>
-  +sceneChanged(): boolean
-  +startGame() : void
-}
+
 
 class SceneCommunicator {
   <<interface>>
