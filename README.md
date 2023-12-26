@@ -173,7 +173,7 @@ class ScenePanel{
   +paint(final Graphics g): void
 }
 
-SceneManagerImpl2 {
+class SceneManagerImpl2 {
   <<class>>
   -scene: Scene
   -scenePanel: ScenePanel
