@@ -50,8 +50,9 @@ class View {
 
 GameEngine o-- View
 GameEngine o-- Scene
+GameEngine o-- ScenePanel
+GameEngine o-- SceneManager
 
-ScenePanelImpl --|> ScenePanel : Implements
 
 View o-- ScenePanel
 
