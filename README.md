@@ -153,9 +153,7 @@ GameObjectImpl o-- V2d
 ```
 
 ```mermaid
-
-
-
+classDiagram
 class SceneManager {
   <<interface>>
   +getActualScene(): Entry<ScenePanel,Scene>
@@ -190,7 +188,5 @@ SceneManagerImpl o-- Scene
 SceneManagerImpl o-- ScenePanel
 
 Scene o-- SceneCommunicator
-
-
 
 ```
