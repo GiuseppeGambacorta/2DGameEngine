@@ -162,11 +162,6 @@ class SceneManager {
   sceneChanged(): boolean
 }
 
-class Scene {
-  <<interface>>
-  +updateState(dt: int): void
-  +getSceneEntities(): List<GameObject>
-}
 
 
 class ScenePanel{
@@ -205,5 +200,5 @@ SceneManagerImpl ..|> SceneCommunicator : Implements
 SceneManagerImpl o-- GameScene
 SceneManagerImpl o-- ScenePanel
 
-Scene o-- SceneManagerImpl
+SceneImpl o-- SceneManagerImpl
 ```
