@@ -174,14 +174,7 @@ class ScenePanel{
 }
 
 
-SceneManagerImpl {
-  <<class>>
-  -scene: Scene
-  -scenePanel: ScenePanel
-  +SceneManagerImpl(scene: Scene, scenePanel: ScenePanel, sceneCommunicator: SceneCommunicator)
-  +getActualScene(): Entry<ScenePanel,Scene>
-  sceneChanged(): boolean
-}
+
 
 class SceneCommunicator {
   <<interface>>
