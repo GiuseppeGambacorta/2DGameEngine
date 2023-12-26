@@ -200,5 +200,5 @@ SceneManagerImpl ..|> SceneCommunicator : Implements
 SceneManagerImpl o-- GameScene
 SceneManagerImpl o-- ScenePanel
 
-SceneImpl o-- SceneManagerImpl
+GameScene o-- SceneManagerImpl
 ```
