@@ -194,5 +194,4 @@ SceneManagerImpl o-- Scene
 SceneManagerImpl o-- ScenePanel
 
 Scene o-- SceneManagerImpl
-
 ```
