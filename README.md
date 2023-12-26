@@ -5,8 +5,9 @@ class GameEngine {
   <<class>>
   -period: long
   -logger: Logger
-  
+  -SceneManager: SceneManager
   -currentScene: Scene
+  -currentPanel: ScenePanel
   -window: wiev
   +GameEngine()
   +mainLoop(): void
@@ -15,28 +16,51 @@ class GameEngine {
   -updateGame(elapsed: int): void
   -render(): void
 }
-class P2d {
-  <<class>>
-  -x: double
-  -y: double
-  +P2d(x: double, y: double)
-  +getX(): double
-  +getY(): double
-  +sum(v: V2d): P2d
-  +sub(v: P2d): V2d
+
+
+class Scene {
+  <<interface>>
+  +updateState(dt: int): void
+  +getSceneEntities(): List<GameObject>
 }
-class V2d {
-  <<class>>
-  -x: double
-  -y: double
-  +V2d(x: double, y: double)
-  +getX(): double
-  +getY(): double
-  +sum(v: V2d): V2d
-  +module(): double
-  +getNormalized(): V2d
-  +mul(fact: double): V2d
+
+
+
+class ScenePanel{
+  <<interface>>
+  +paint(final Graphics g): void
 }
+
+
+
+
+class SceneManager {
+  <<interface>>
+  +getActualScene(): Entry<ScenePanel,Scene>
+  sceneChanged(): boolean
+}
+
+
+
+class View {
+  <<interface>>
+  +render(): void
+}
+
+
+GameEngine o-- View
+GameEngine o-- Scene
+
+ScenePanelImpl --|> ScenePanel : Implements
+
+View o-- ScenePanel
+
+
+```
+
+
+```mermaid
+classDiagram
 
 class Scene {
   <<interface>>
@@ -51,21 +75,6 @@ class GameScene {
   +updateState(dt: int): void
   +getSceneEntities(): List<GameObject>
 }
-
-class ScenePanel{
-  <<interface>>
-  +paint(final Graphics g): void
-}
-
-class ScenePanelImpl{
-  <<class>>
-  -centerX: int
-  -centerY: int
-  -scene: Scene
-  +ScenePanelImpl(scene: Scene)
-  +paint(final Graphics g): void
-}
-
 
 
 class GameObject {
@@ -89,18 +98,30 @@ class GameObjectImpl {
   +getCurrentVel(): V2d
 }
 
-class View {
-  <<interface>>
-  +render(): void
+
+class P2d {
+  <<class>>
+  -x: double
+  -y: double
+  +P2d(x: double, y: double)
+  +getX(): double
+  +getY(): double
+  +sum(v: V2d): P2d
+  +sub(v: P2d): V2d
+}
+class V2d {
+  <<class>>
+  -x: double
+  -y: double
+  +V2d(x: double, y: double)
+  +getX(): double
+  +getY(): double
+  +sum(v: V2d): V2d
+  +module(): double
+  +getNormalized(): V2d
+  +mul(fact: double): V2d
 }
 
-
-GameEngine o-- View
-GameEngine o-- Scene
-
-ScenePanelImpl --|> ScenePanel : Implements
-ScenePanelImpl o-- Scene
-View o-- ScenePanel
 
 GameScene --|> Scene : Implements
 GameScene o-- GameObject
@@ -110,8 +131,6 @@ GameObjectImpl ..|> GameObject : Implements
 GameObjectImpl o-- P2d
 GameObjectImpl o-- V2d
 
-
-
-
+```
 
 
