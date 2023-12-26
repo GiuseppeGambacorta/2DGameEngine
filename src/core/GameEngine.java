@@ -8,7 +8,6 @@ import java.util.Objects;
 
 import java.util.logging.*;
 
-
 import graphics.api.View;
 import graphics.impl.wievimpl;
 import scenes.api.*;

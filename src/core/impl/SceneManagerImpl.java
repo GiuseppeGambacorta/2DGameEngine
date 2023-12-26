@@ -56,7 +56,10 @@ public class SceneManagerImpl implements SceneManager, SceneCommunicator {
                 .orElse(null);
     }
 
-
+    @Override
+    public boolean sceneChanged() {
+        return changed;
+    }
 
 
     @Override
@@ -72,12 +75,6 @@ public class SceneManagerImpl implements SceneManager, SceneCommunicator {
             currentPanel = anotherScenePanel;
         }
 
-    }
-
-    @Override
-    public boolean sceneChanged() {
-        return changed;
-        
     }
     
 }

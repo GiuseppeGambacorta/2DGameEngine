@@ -5,7 +5,7 @@ class GameEngine {
   <<class>>
   -period: long
   -logger: Logger
-  -scenes: List<Scene>
+  
   -currentScene: Scene
   -window: wiev
   +GameEngine()
