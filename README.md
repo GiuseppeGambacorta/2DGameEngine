@@ -176,7 +176,6 @@ class ScenePanel{
 SceneManagerImpl {
   <<class>>
   -scene: Scene
-  
 }
 
 
