@@ -173,9 +173,13 @@ class ScenePanel{
   +paint(final Graphics g): void
 }
 
-SceneManagerImpl {
+SceneManagerImpl2 {
   <<class>>
   -scene: Scene
+  -scenePanel: ScenePanel
+  +getActualScene(): Entry<ScenePanel,Scene>
+  +sceneChanged(): boolean
+  +startGame() : void
 }
 
 
