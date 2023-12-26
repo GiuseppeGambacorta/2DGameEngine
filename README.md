@@ -160,6 +160,18 @@ class SceneManager {
   sceneChanged(): boolean
 }
 
+class Scene {
+  <<interface>>
+  +updateState(dt: int): void
+  +getSceneEntities(): List<GameObject>
+}
+
+
+class ScenePanel{
+  <<interface>>
+  +paint(final Graphics g): void
+}
+
 class SceneManagerImpl {
   <<class>>
   -scenes: Map<String, Scene>
@@ -183,7 +195,7 @@ class ScenePanelImpl{
 
 
 SceneManagerImpl ..|> SceneManager : Implements
-sceneManagerImpl ..|> SceneCommunicator : Implements
+SceneManagerImpl ..|> SceneCommunicator : Implements
 SceneManagerImpl o-- Scene
 SceneManagerImpl o-- ScenePanel
 
