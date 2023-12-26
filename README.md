@@ -72,6 +72,7 @@ class Scene {
 class GameScene {
   <<class>>
   -entities: List<GameObject>
+  -SceneCommunicator manager;
   +GameScene()
   +updateState(dt: int): void
   +getSceneEntities(): List<GameObject>
@@ -173,7 +174,7 @@ class ScenePanel{
   +paint(final Graphics g): void
 }
 
-class SceneManagerImpl2 {
+class SceneManagerImpl {
   <<class>>
   -scene: Scene
   -scenePanel: ScenePanel
@@ -183,6 +184,17 @@ class SceneManagerImpl2 {
 }
 
 
+class GameScene {
+  <<class>>
+  -entities: List<GameObject>
+  -SceneCommunicator manager;
+  +GameScene()
+  +updateState(dt: int): void
+  +getSceneEntities(): List<GameObject>
+}
+
+
+
 class SceneCommunicator {
   <<interface>>
   +startGame() : void
@@ -190,7 +202,7 @@ class SceneCommunicator {
 
 SceneManagerImpl ..|> SceneManager : Implements
 SceneManagerImpl ..|> SceneCommunicator : Implements
-SceneManagerImpl o-- Scene
+SceneManagerImpl o-- GameScene
 SceneManagerImpl o-- ScenePanel
 
 Scene o-- SceneManagerImpl
