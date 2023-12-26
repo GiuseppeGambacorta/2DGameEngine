@@ -63,10 +63,10 @@ ScenePanelImpl o-- Scene
 View o-- ScenePanel
 
 
+```
 
 
-
-
+```mermaid
 classDiagram
 
 class GameObject {
@@ -122,3 +122,5 @@ GameObjectImpl ..|> GameObject : Implements
 
 GameObjectImpl o-- P2d
 GameObjectImpl o-- V2d
+
+```
