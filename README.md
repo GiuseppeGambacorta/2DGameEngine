@@ -173,7 +173,11 @@ class ScenePanel{
   +paint(final Graphics g): void
 }
 
-
+SceneManagerImpl {
+  <<class>>
+  -scene: Scene
+  
+}
 
 
 class SceneCommunicator {
