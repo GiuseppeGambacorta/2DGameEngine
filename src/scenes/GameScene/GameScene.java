@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 import common.P2d;
 import common.V2d;
@@ -16,7 +18,7 @@ import scenes.api.Scene;
 public class GameScene implements Scene{
 
     final private List<GameObject> objects;
-    final private List<Command> comands = new LinkedList<>();
+    final private BlockingQueue<Command> commands = new ArrayBlockingQueue<Command>(100);
     final private GameObject ball;
     public GameScene(){
         objects = new ArrayList<GameObject>();
@@ -37,15 +39,17 @@ public class GameScene implements Scene{
 
     @Override
     public void addCommand(Command cmd) {
-        comands.add(cmd);
+        commands.add(cmd);
       
     }
 
     @Override
     public void executeCommands(){
-        if (!comands.isEmpty()){
-            comands.forEach( cmd -> cmd.execute(ball));
-            comands.clear();
+        if (!commands.isEmpty()){
+            commands.forEach( cmd -> cmd.execute(ball));
+            commands.clear();
+        } else {
+            ball.setVel(new V2d(0, 0));
         }
     }
 }
