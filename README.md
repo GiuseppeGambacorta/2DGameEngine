@@ -163,6 +163,11 @@ class SceneManager {
 }
 
 
+class Scene {
+  <<interface>>
+  +updateState(dt: int): void
+  +getSceneEntities(): List<GameObject>
+}
 
 class ScenePanel{
   <<interface>>
