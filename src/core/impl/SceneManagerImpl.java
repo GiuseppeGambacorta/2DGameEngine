@@ -23,7 +23,7 @@ public class SceneManagerImpl implements SceneManager, SceneCommunicator {
 
     final private Menu menuScene = new MenuScene(this);
     final private Scene gameScene = new GameScene();
-	final private Scene anotherScene = new AnotherScene();
+    final private Scene anotherScene = new AnotherScene();
 
     final private ScenePanel menuScenePanel = new MenuPanel(menuScene, 600, 600);
     final private ScenePanel gameScenePanel = new GameScenePanel(gameScene, 600, 600);
@@ -39,8 +39,8 @@ public class SceneManagerImpl implements SceneManager, SceneCommunicator {
         scenePanelMap = new HashMap<>();
 
         scenePanelMap.put(menuScenePanel, menuScene);
-		scenePanelMap.put(gameScenePanel, gameScene);
-		scenePanelMap.put(anotherScenePanel, anotherScene);
+        scenePanelMap.put(gameScenePanel, gameScene);
+        scenePanelMap.put(anotherScenePanel, anotherScene);
 
         currentScene = menuScene;
         currentPanel = menuScenePanel;
@@ -58,7 +58,11 @@ public class SceneManagerImpl implements SceneManager, SceneCommunicator {
 
     @Override
     public boolean sceneChanged() {
-        return changed;
+        boolean temp = changed;
+        if(changed){
+            changed = false;
+        }
+        return temp;
     }
 
 
