@@ -11,26 +11,26 @@ import scenes.AnotherScene.AnotherScenePanel;
 import scenes.GameScene.GameScene;
 import scenes.GameScene.GameScenePanel;
 import scenes.MenuScene.MenuPanel;
-import scenes.MenuScene.MenuScene;
-import scenes.api.Menu;
+import scenes.MenuScene.StartMenu;
+import scenes.api.MenuScene;
 import scenes.api.Scene;
-import scenes.api.ScenePanel;
+import scenes.api.PanelScene;
 import java.util.Random;
 
 public class SceneManagerImpl implements SceneManager, SceneCommunicator {
 
-    final private Map<ScenePanel, Scene> scenePanelMap;
+    final private Map<PanelScene, Scene> scenePanelMap;
 
-    final private Menu menuScene = new MenuScene(this);
+    final private StartMenu menuScene = new StartMenu(this);
     final private Scene gameScene = new GameScene();
     final private Scene anotherScene = new AnotherScene();
 
-    final private ScenePanel menuScenePanel = new MenuPanel(menuScene, 600, 600);
-    final private ScenePanel gameScenePanel = new GameScenePanel(gameScene, 600, 600);
-    final private ScenePanel anotherScenePanel = new AnotherScenePanel(anotherScene, 600, 600);
+    final private PanelScene menuScenePanel = new MenuPanel(menuScene, 600, 600);
+    final private PanelScene gameScenePanel = new GameScenePanel(gameScene, 600, 600);
+    final private PanelScene anotherScenePanel = new AnotherScenePanel(anotherScene, 600, 600);
 		
     private Scene currentScene;
-	private ScenePanel currentPanel;
+	private PanelScene currentPanel;
 
     private boolean changed;
 
@@ -49,7 +49,7 @@ public class SceneManagerImpl implements SceneManager, SceneCommunicator {
     }
 
     @Override
-    public Entry<ScenePanel,Scene>  getActualScene(){
+    public Entry<PanelScene,Scene>  getActualScene(){
         return scenePanelMap.entrySet().stream()
                 .filter(entry -> entry.getKey().equals(currentPanel))
                 .findFirst()
@@ -71,13 +71,10 @@ public class SceneManagerImpl implements SceneManager, SceneCommunicator {
 
         var random = new Random();
         changed = true;
-        if (random.nextInt(1, 3) == 1){
-            currentScene = gameScene;
-            currentPanel = gameScenePanel;
-        } else {
-            currentScene = anotherScene;
-            currentPanel = anotherScenePanel;
-        }
+       
+        currentScene = gameScene;
+        currentPanel = gameScenePanel;
+      
 
     }
     

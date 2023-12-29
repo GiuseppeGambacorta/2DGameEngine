@@ -1,8 +1,8 @@
 package graphics.api;
 
-import scenes.api.ScenePanel;
+import scenes.api.PanelScene;
 
 public interface View {
     public void render();
-    public void setPanelScene(ScenePanel scenepanel);
+    public void setPanelScene(PanelScene scenepanel);
 }

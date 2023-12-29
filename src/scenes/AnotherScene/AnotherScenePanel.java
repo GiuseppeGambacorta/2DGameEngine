@@ -13,12 +13,14 @@ import scenes.api.*;
 import model.api.*;
 
 import common.*;
+import input.Controller;
 import model.impl.*;
 
-public class AnotherScenePanel extends JPanel implements ScenePanel{
+public class AnotherScenePanel extends JPanel implements PanelScene{
     	final private int centerX;
     	final private int centerY;
 		final private Scene scene;
+		private Controller ctrl;
     	
     	public AnotherScenePanel (final Scene scene, final int w, final int h){
             setSize(w,h);
@@ -50,4 +52,15 @@ public class AnotherScenePanel extends JPanel implements ScenePanel{
     		});
             
         }
+
+		
+
+		@Override
+		public void addNotify() {
+			super.addNotify();
+			requestFocusInWindow();
+		}
+
+
+	
     }

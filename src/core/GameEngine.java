@@ -1,15 +1,15 @@
 package core;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+
 
 import java.util.logging.*;
 
 import graphics.api.View;
 import graphics.impl.wievimpl;
+import input.Controller;
+
 import scenes.api.*;
 import core.api.*;
 import core.impl.SceneManagerImpl;
@@ -21,16 +21,19 @@ public class GameEngine  {
 	
 	private final SceneManager sceneManager;
 	private Scene currentScene;
-	private ScenePanel currentPanel;
+	private PanelScene currentPanel;
 	final private View window;
+
 
 	public GameEngine(){
 
 		
 		sceneManager = new SceneManagerImpl();
 		setScene();
+	
 		window = new wievimpl(currentPanel, "engine", 600, 600);
 		
+	
 		
 	}
 	
@@ -57,7 +60,8 @@ public class GameEngine  {
 	}
 	
 	protected void processInput(){
-		logger.log(Level.INFO, "..process input..");
+		//logger.log(Level.INFO, "..process input..");
+		currentScene.executeCommands();
 	}
 	
 	protected void updateGame(final int elapsed){
@@ -74,6 +78,8 @@ public class GameEngine  {
 	}
 
 
+
+
 	private void setScene(){
 		var current = this. sceneManager.getActualScene();
 		this.currentScene = current.getValue();
@@ -84,6 +90,8 @@ public class GameEngine  {
 		setScene();
 		this.window.setPanelScene(currentPanel);
 	}
+
+	
 
 
 	

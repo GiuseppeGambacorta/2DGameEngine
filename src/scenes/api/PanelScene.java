@@ -2,6 +2,8 @@ package scenes.api;
 
 import java.awt.Graphics;
 
-public interface ScenePanel {
+
+public interface PanelScene {
     public void paint(final Graphics g);
+
 }
