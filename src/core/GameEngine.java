@@ -26,13 +26,12 @@ public class GameEngine  {
 
 	public GameEngine(){
 
-		sceneManager = new SceneManagerImpl();
-		var current = sceneManager.getActualScene();
-	
-		currentScene = current.getValue();
-		currentPanel = current.getKey();
 		
+		sceneManager = new SceneManagerImpl();
+		setScene();
 		window = new wievimpl(currentPanel, "engine", 600, 600);
+		
+		
 	}
 	
 	public void mainLoop(){
@@ -65,16 +64,25 @@ public class GameEngine  {
 		currentScene.updateState(elapsed);
 
 		if (sceneManager.sceneChanged()){
-			var current = sceneManager.getActualScene();
-			currentScene = current.getValue();
-			currentPanel = current.getKey();
-			window.setPanelScene(currentPanel);
+			setActualSceneToView();
 		}
 
 	}
 	
 	protected void render(){
 		window.render();
+	}
+
+
+	private void setScene(){
+		var current = this. sceneManager.getActualScene();
+		this.currentScene = current.getValue();
+		this.currentPanel = current.getKey();
+	}
+
+	private void setActualSceneToView(){
+		setScene();
+		this.window.setPanelScene(currentPanel);
 	}
 
 
