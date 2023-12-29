@@ -197,9 +197,10 @@ class SceneCommunicator {
 
 SceneManagerImpl ..|> SceneManager : Implements
 SceneManagerImpl ..|> SceneCommunicator : Implements
-SceneManagerImpl o-- GameScene
+SceneManagerImpl o-- Scene
 SceneManagerImpl o-- ScenePanel
 
+GameScene --|> Scene : Implements
 GameScene o-- SceneCommunicator
 
 ```
