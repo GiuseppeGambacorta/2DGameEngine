@@ -1,15 +1,22 @@
 package scenes.GameScene;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
+
+import static java.awt.Image.SCALE_DEFAULT;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import scenes.api.*;
@@ -43,6 +50,7 @@ public class GameScenePanel extends JPanel implements PanelScene, KeyListener{
 
         }
         
+		@Override
         public void paint(final Graphics g){
     		Graphics2D g2 = (Graphics2D) g;
     		JButton button = new JButton();
@@ -62,7 +70,18 @@ public class GameScenePanel extends JPanel implements PanelScene, KeyListener{
     			if (e instanceof Ball){
     				g2.setColor(Color.BLUE);
     				g2.setStroke(strokeBall);
-    				g2.drawOval(x-20, y-20, 40, 40);
+    				//g2.drawOval(x-20, y-20, 40, 40);
+					Image img = null;
+					Image img2 = null;
+					try {
+						img = ImageIO.read(new File("pacman.png")).getScaledInstance(40, 40, SCALE_DEFAULT);
+						img2 = ImageIO.read(new File("ghost.png")).getScaledInstance(60, 60, SCALE_DEFAULT);
+					} catch (IOException daje){
+						daje.printStackTrace();
+					}
+				
+				g2.drawImage(img, x ,y , this);
+				g2.drawImage(img2, 30 ,30 , this);
                 }
     		});
             
